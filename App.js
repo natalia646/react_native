@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import styled from "styled-components/native";
+import { View, Text, StatusBar } from "react-native";
+import { Post } from "./components/Post";
+import { useState } from "react";
+
+const ContainerView = styled.View`
+  background-color: red;
+  width: auto;
+  height: 70px;
+`;
 
 export default function App() {
+  const [count, setCount] = useState(5)
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <StatusBar styled="auto" />
+      <ContainerView>
+        <Text>Hello</Text>
+        <Post num={count} />
+      </ContainerView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
