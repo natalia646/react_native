@@ -6,12 +6,13 @@ import {
   StatusBar,
   FlatList,
   ActivityIndicator,
+  RefreshControl,
 } from "react-native";
 import { Post } from "./components/Post";
 import { useEffect, useState } from "react";
 
 const ContainerView = styled.View`
-  background-color: rgba(155,45,164,0.1);
+  background-color: rgba(155, 45, 164, 0.1);
 `;
 
 export default function App() {
@@ -47,6 +48,9 @@ export default function App() {
         <Text>Hello</Text>
 
         <FlatList
+          refreshControl={
+            <RefreshControl refreshing={isLoading} onRefresh={fetchItems} />
+          }
           data={items}
           renderItem={({ item }) => (
             <Post id={item.id} title={item.title} img={item.imageUrl} />
